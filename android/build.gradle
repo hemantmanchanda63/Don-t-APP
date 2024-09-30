@@ -1,0 +1,29 @@
+buildscript {
+    ext {
+        buildToolsVersion = "34.0.0"
+        minSdkVersion = 23
+        compileSdkVersion = 34
+        targetSdkVersion = 34
+         if (System.properties['os.arch'] == "aarch64") {
+            ndkVersion = "24.0.8215888"
+        } else {
+            ndkVersion = "23.1.7779620"
+        }
+        kotlinVersion = "1.9.22"
+    }
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("com.android.tools.build:gradle")
+        classpath("com.facebook.react:react-native-gradle-plugin")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")
+    }
+}
+project.ext.react = [
+    enableCmake: true  // Enable CMake support for the project
+]
+
+
+apply plugin: "com.facebook.react.rootproject"
